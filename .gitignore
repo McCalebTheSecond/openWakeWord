@@ -142,3 +142,13 @@ examples/
 
 # archive files
 archive/
+
+# Local custom wakeword models (keep docs, ignore binaries)
+wakewords/*.onnx
+wakewords/*.tflite
+wakewords/*.pt
+wakewords/*.pth
+wakewords/*.pkl
+
+# Downloaded openWakeWord model binaries (created by `openwakeword.utils.download_models()`)
+openwakeword/resources/

@@ -1,7 +1,19 @@
 import os
 from openwakeword.model import Model
 from openwakeword.vad import VAD
-from openwakeword.custom_verifier_model import train_custom_verifier
+
+# Optional: training helper for voice-specific verifier models.
+# This pulls in heavier dependencies (scipy, scikit-learn). For users who only want
+# wakeword inference, we keep import-time requirements minimal and raise a helpful
+# error if the optional deps are missing.
+try:
+    from openwakeword.custom_verifier_model import train_custom_verifier
+except Exception as e:  # pragma: no cover
+    def train_custom_verifier(*args, **kwargs):  # type: ignore[no-redef]
+        raise ImportError(
+            "train_custom_verifier requires optional dependencies. Install them with:\n"
+            "  python -m pip install scipy scikit-learn"
+        ) from e
 
 __all__ = ['Model', 'VAD', 'train_custom_verifier']
 

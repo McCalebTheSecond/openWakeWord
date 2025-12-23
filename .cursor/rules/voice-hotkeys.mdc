@@ -1,0 +1,49 @@
+---
+alwaysApply: false
+---
+
+# Voice hotkeys (Windows quickstart)
+
+This repo includes `scripts/voice_hotkeys.py`, which lets you trigger keyboard hotkeys using openWakeWord.
+
+## What it does (recommended pair)
+
+- Say **"hey jarvis"** → holds **Ctrl + Alt**
+- Say **"alexa"** → releases **Ctrl + Alt**
+
+## Setup (recommended: virtualenv)
+
+From the repo root (`C:\Users\caleb\Documents\Coding\openWakeWord`):
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\python -m pip install -U pip
+
+# install openWakeWord (editable) + its runtime deps
+.\.venv\Scripts\python -m pip install -e .
+
+# microphone capture + keyboard control
+.\.venv\Scripts\python -m pip install sounddevice pynput
+```
+
+## One-time model download
+
+```powershell
+.\.venv\Scripts\python -c "import openwakeword; openwakeword.utils.download_models()"
+```
+
+## Run
+
+```powershell
+.\.venv\Scripts\python scripts\voice_hotkeys.py --whisper-model "hey jarvis" --hush-model "alexa"
+```
+
+## Tips
+
+- If your microphone won’t open at 16kHz, set the Windows device “Default format” to **16000 Hz**.
+- To list audio devices:
+
+```powershell
+.\.venv\Scripts\python scripts\voice_hotkeys.py --list-devices
+```
+
