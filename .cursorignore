@@ -1,0 +1,60 @@
+# Cursor ignore file
+# This controls what Cursor indexes/searches. Keep source code included; exclude
+# generated artifacts, caches, and large/binary data that slows indexing.
+
+# Python bytecode / caches
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Build / packaging outputs
+build/
+dist/
+**/*.egg-info/
+.eggs/
+eggs/
+wheels/
+pip-wheel-metadata/
+*.egg
+
+# Test / tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.hypothesis/
+.cache/
+htmlcov/
+coverage.xml
+.coverage
+.coverage.*
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editors / OS
+.vscode/
+.idea/
+**/.DS_Store
+**/Thumbs.db
+
+# Repo-specific: large/binary data that isn't useful for code intelligence
+# (keeps the repo snappy while still leaving files on disk)
+notebooks/
+examples/
+archive/
+
+# Audio/plot binaries (kept conservative: docs images are still browsable, but not indexed)
+**/*.wav
+**/*.png
+
+
