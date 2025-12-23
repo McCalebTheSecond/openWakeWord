@@ -1,0 +1,37 @@
+---
+description: GitHub repo setup and workflow.
+alwaysApply: false
+---
+# Git remote setup (origin vs upstream)
+
+- **origin**: `https://github.com/McCalebTheSecond/openWakeWord.git` (default push/pull)
+- **upstream**: `https://github.com/dscripka/openWakeWord.git` (fetch-only; push disabled via `no_push`)
+
+Sanity check:
+
+```bash
+git remote -v
+git branch -vv
+```
+
+Expected:
+- `main` tracks `origin/main`
+- `upstream` shows `no_push (push)`
+
+Update from upstream (then publish to origin):
+
+```bash
+git fetch upstream
+git merge upstream/main
+git push
+```
+
+Recreate setup:
+
+```bash
+git remote rename origin upstream
+git remote add origin https://github.com/McCalebTheSecond/openWakeWord.git
+git push -u origin main
+git remote set-url --push upstream no_push
+```
+
